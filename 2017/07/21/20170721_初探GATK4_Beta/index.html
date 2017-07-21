@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>初探 GATK4 beta | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="(本文是根据GeneDock基因数据工程师孙兴强对GATK4 beta版的调研结果整理，转载请保留转载信息和原文作者及链接。)本文根据GATK4在GitHub上的说明文档和版本开发记录进行编辑、整理和该版本软件对生物信息研发和生产的一些体验。由于GATK4还在开发中，本文的时效性会受该项目的开发进度影响，请谨慎阅读。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初探 GATK4 beta">
+<meta property="og:url" content="https://sun010848.github.io/2017/07/21/20170721_初探GATK4_Beta/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="(本文是根据GeneDock基因数据工程师孙兴强对GATK4 beta版的调研结果整理，转载请保留转载信息和原文作者及链接。)本文根据GATK4在GitHub上的说明文档和版本开发记录进行编辑、整理和该版本软件对生物信息研发和生产的一些体验。由于GATK4还在开发中，本文的时效性会受该项目的开发进度影响，请谨慎阅读。">
+<meta property="og:updated_time" content="2017-07-21T05:01:46.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="初探 GATK4 beta">
+<meta name="twitter:description" content="(本文是根据GeneDock基因数据工程师孙兴强对GATK4 beta版的调研结果整理，转载请保留转载信息和原文作者及链接。)本文根据GATK4在GitHub上的说明文档和版本开发记录进行编辑、整理和该版本软件对生物信息研发和生产的一些体验。由于GATK4还在开发中，本文的时效性会受该项目的开发进度影响，请谨慎阅读。">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sun010848.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="postc-20170721_初探GATK4_Beta" class="article article-type-postc" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/21/20170721_初探GATK4_Beta/" class="article-date">
+  <time datetime="2017-07-21T03:00:00.000Z" itemprop="datePublished">2017-07-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      初探 GATK4 beta
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p></p><p class="author-title">(本文是根据GeneDock基因数据工程师孙兴强对GATK4 beta版的调研结果整理，转载请保留转载信息和原文作者及链接。)</p><br><span style="font-size:14px"><p></p><br><span style="font-size:16px">本文根据GATK4在GitHub上的说明文档和版本开发记录进行编辑、整理和该版本软件对生物信息研发和生产的一些体验。由于GATK4还在开发中，本文的时效性会受该项目的开发进度影响，请谨慎阅读。<p></p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2></span><a id="more"></a>
+<p>博客草稿：</p>
+<h3 id="GATK4-beta-初探"><a href="#GATK4-beta-初探" class="headerlink" title="GATK4 beta 初探"></a>GATK4 beta 初探</h3><h4 id="1-GATK4-概览"><a href="#1-GATK4-概览" class="headerlink" title="1 GATK4 概览"></a>1 GATK4 概览</h4><p>虽然GATK4开源的消息已经放出了很长时间，但是从GATK4的GitHub <a href="https://github.com/broadinstitute/gatk" target="_blank" rel="external">代码仓库</a>来看，确实另外一番光景。</p>
+<p>重要的事情说一下： </p>
+<blockquote>
+<p>This project is in a pre-release stage of development. It is subject to change without warning. Do not use this code for production work.</p>
+</blockquote>
+<p>所以，目前版本只能用来做开发或者欣赏代码，不推荐用做生产。所以，要用GATK3去进行生产。 </p>
+<blockquote>
+<p>The contents of this repository are 100% open source and released under the BSD 3-Clause license (see <a href="https://github.com/broadinstitute/gatk/blob/master/LICENSE.TXT" target="_blank" rel="external">LICENSE.TXT</a>).</p>
+</blockquote>
+<p>GATK4的开源协议是 BSD-3-Clause license，根据LICENSE.TXT的条款内容结合<a href="https://zh.wikipedia.org/wiki/BSD%E8%AE%B8%E5%8F%AF%E8%AF%81#endnote_change" target="_blank" rel="external">wiki百科</a>翻译如下：</p>
+<ul>
+<li>对于本软件源代码的再散播，必须保留上述的版权宣告、此三条件表列，以及下述的免责声明；</li>
+<li>对于本套件二进位可执行形式的再散播，必须连带以文件以及／或者其他附于散播包装中的媒介方式，重制上述之版权宣告、此三条件表列，以及下述的免责声明；</li>
+<li>未获事前取得书面许可，不得使用Broad Institute, Inc或本软件贡献者之名称，来为本软件之衍生物做任何表示支持、认可或推广、促销之行为。</li>
+</ul>
+<blockquote>
+<p>GATK4 aims to bring together well-established tools from the <a href="http://www.broadinstitute.org/gatk" target="_blank" rel="external">GATK</a> and <a href="http://broadinstitute.github.io/picard/" target="_blank" rel="external">Picard</a> codebases under a streamlined framework, and to enable selected tools to be run in a massively parallel way on local clusters or in the cloud using <a href="http://spark.apache.org/" target="_blank" rel="external">Apache Spark</a>. It also contains many newly developed tools not present in earlier releases of the toolkit.</p>
+</blockquote>
+<p>由于GATK3已经和Picard被认为是黄金组合，GATK4果断将这两个软件包合二为一，方便用户使用。为了加快运行速度，GATK4支持本地集群并行和<a href="http://spark.apache.org/" target="_blank" rel="external">Apache Spark</a>云端并行计算。另外，新的小工具也会放到这个包里面。</p>
+<h4 id="2-GATK4-的主要Issues"><a href="#2-GATK4-的主要Issues" class="headerlink" title="2 GATK4 的主要Issues"></a>2 GATK4 的主要Issues</h4><p>2017年6月29日，GATK团队放出 4.beta.1 Pre-release版本。并且该版本的docker镜像已经发布在<a href="https://hub.docker.com/r/broadinstitute/gatk/tags/" target="_blank" rel="external">gatk代码仓库</a>，喜欢用docker的用户可以直接到docker-hub里面选择自己需要的<code>tag</code>抓下来。</p>
+<p>主要更新内容如下：</p>
+<ul>
+<li>1 GCS (Google Cloud Storage) 目前部分工具支持谷歌云存储作为输入和输出，一般来说GCS和 Spark连接比较紧密，方便并行计算。</li>
+<li>2 <code>HaplotypeCaller</code>和<code>HaplotypeCallerSpark</code>还在开发中，不能用在生产环境，并且目前GATK4的<code>HaplotypeCaller</code>的结果和GATK3 <code>HaplotypeCaller</code>的不具有可比性。</li>
+<li>3 GATK4.beta.1的整合的Picard是旧版Picard，后续GATK团队会整合最新版本的Picard。</li>
+<li>4 CRAM reading can fail with an MD5 mismatch when the reference or reads contain ambiguity codes (#3154)</li>
+<li>5 由于<code>htsjdk</code>的严重bug，<code>IndexFeatureFile</code>工具目前不能用。</li>
+<li>6 GATK4 用<code>GenomicsDBImport</code>来取代<code>CombineGVCFs</code>,在大规模并行计算的时候，会导致GCS 部分任务故障。</li>
+<li>7 外显子测序数据可以使用GATK4的CNV工作流并通过评估验证，但对全基因组的测序数据评估还在进行中。对于somatic 数据，通过调整<code>PerformSegmentation</code> or <code>AllelicCNV</code>的参数，可以提升全基因组数据的运行效率或者降低运行时间。</li>
+<li>8  对于正常人群做<code>GermlineCNVCaller</code>的时候建议使用Spark cluster，感觉没有get到点。</li>
+<li>9 原计划上线的SV工作流功能，由于一些问题，只能做基于局部组装判断断点的方法去查找删除，插入和倒位。</li>
+</ul>
+<h4 id="3-GATK4-的部分体验"><a href="#3-GATK4-的部分体验" class="headerlink" title="3 GATK4 的部分体验"></a>3 GATK4 的部分体验</h4><ul>
+<li>1 软件的依赖<ul>
+<li>Java8 </li>
+<li>R 3.1.3 部分工具需要R来做图【推荐但非必须安装】</li>
+<li>git-lfs 方便用户下载GATK4 git 仓库的测试数据【推荐但非必须安装】</li>
+</ul>
+</li>
+<li><p>2 GATK4 获取</p>
+<ul>
+<li>下载未build的软件。</li>
+<li>通过<code>./gradlew bundle</code> 在<code>build</code>目录下面生成 gatk-VERSION.zip</li>
+<li>或者通过<code>./gradlew localJar</code>和<code>./gradlew sparkJar</code> 生成本地版和spark版的java jar包。<ul>
+<li>3 GATK使用体验</li>
+</ul>
+</li>
+<li>GATK4没有<code>UnifiedGenotyper</code>，只有<code>HaplotypeCaller</code></li>
+<li>就像之前提过，GATK4 新增了CNV和SV的分析。</li>
+<li>jar包的使用习惯和之前GATK3类似，但是新的运行方式为：<code>java -jar gatk-package-4.beta.1-local.jar HaplotypeCaller</code>，并且<code>HaplotypeCaller</code>部分的参数与GATK3还是有差别的。</li>
+<li><p>速度比较</p>
+<ul>
+<li><p>测试数据：<code>CEUTrio.HiSeq.WGS.b37.NA12878.20.21.bam</code>  <code>human_g1k_v37.20.21.fasta</code> <code>dbsnp_138.b37.20.21.vcf</code></p>
+</li>
+<li><p>测试机器 普通 4c16g的ECS机子。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>GATK3.6</th>
+<th>GATK4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>参数</td>
+<td><code>-T HaplotypeCaller  -stand_call_conf 30 --emitRefConfidence GVCF &lt;br&gt; -variant_index_type LINEAR -variant_index_parameter 128000</code></td>
+<td><code>HaplotypeCaller -stand_call_conf 30 --emitRefConfidence GVCF</code></td>
+</tr>
+<tr>
+<td>vcf变异位点个数</td>
+<td>19,910</td>
+<td>19,943</td>
+</tr>
+<tr>
+<td>运行时间</td>
+<td>6.86 min</td>
+<td>9.25 min</td>
+</tr>
+<tr>
+<td>运行内存</td>
+<td>2.60G</td>
+<td>1.60G</td>
+</tr>
+</tbody>
+</table>
+<p> 注： 这次测试并没有严格按照beachmark的方式去比较，本文开始也讲了，GATK3和GATK4的结果不具有可比性。</p>
+<h4 id="4-GATK4-使用总结"><a href="#4-GATK4-使用总结" class="headerlink" title="4 GATK4 使用总结"></a>4 GATK4 使用总结</h4><ul>
+<li>1 GATK4开放了源代码，大家可以旁观大牛们如何提issue，如何回复comments，在旁边观战也很涨知识。</li>
+<li>2 GATK4 慎用，由于不是稳定版，各种bug可能会出现在莫名奇妙的角落里，还是耐心等待正式版的发布。当然GATK3还得照样用。由于GATK3的速度慢，推荐大家使用GeneDock HG或者GeneDock Somatic，加速基因数据分析，早日将结果交付到客户或者患者手里。</li>
+<li>3 持续关注GATK4 但愿早日出正式版，技术比较厉害的小伙伴可以fork下来，提交代码。</li>
+</ul>
+</span>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sun010848.github.io/2017/07/21/20170721_初探GATK4_Beta/" data-id="cj5defrhg0001pgs6nkasbmxo" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/21/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/21/测试/">测试</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/21/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/21/20170721_初探GATK4_Beta/">初探 GATK4 beta</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
