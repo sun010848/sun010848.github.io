@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Futurelean Clinical Bioinformatics-week5 | Biolaosun</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="记录自己在学习《Clinical Bioinformatics》的点点滴滴思考。这次记录的是第五周的课程。这周课程主要是讲临床场景方面的东西。  This activity will see us return to St Mary’s hospital and the Manchester Centre for Genomic Medicine as we focus on the bioinf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Futurelean Clinical Bioinformatics-week5">
+<meta property="og:url" content="https://sun010848.github.io/2017/08/12/20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER_week5/index.html">
+<meta property="og:site_name" content="Biolaosun">
+<meta property="og:description" content="记录自己在学习《Clinical Bioinformatics》的点点滴滴思考。这次记录的是第五周的课程。这周课程主要是讲临床场景方面的东西。  This activity will see us return to St Mary’s hospital and the Manchester Centre for Genomic Medicine as we focus on the bioinf">
+<meta property="og:updated_time" content="2017-08-12T08:06:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Futurelean Clinical Bioinformatics-week5">
+<meta name="twitter:description" content="记录自己在学习《Clinical Bioinformatics》的点点滴滴思考。这次记录的是第五周的课程。这周课程主要是讲临床场景方面的东西。  This activity will see us return to St Mary’s hospital and the Manchester Centre for Genomic Medicine as we focus on the bioinf">
+  
+    <link rel="alternate" href="/atom.xml" title="Biolaosun" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Biolaosun</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sun010848.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER_week5" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/12/20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER_week5/" class="article-date">
+  <time datetime="2017-08-12T08:06:44.000Z" itemprop="datePublished">2017-08-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Futurelean Clinical Bioinformatics-week5
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>记录自己在学习《Clinical Bioinformatics》的点点滴滴思考。这次记录的是第五周的课程。<br>这周课程主要是讲临床场景方面的东西。</p>
+<blockquote>
+<p>This activity will see us return to St Mary’s hospital and the Manchester Centre for Genomic Medicine as we focus on the bioinformatician’s role in practice.</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="week5-5-1"><a href="#week5-5-1" class="headerlink" title="week5 5-1"></a>week5 5-1</h4><p>开课视频介绍<br>本周的关注点：<br>1、Describe the steps in designing the analysis pipeline for cases investigating retinal dystrophy<br>描述下为视网膜营养不良病例设计分析流程。<br>2、Explain the importance of standardisation, accuracy and security in the bioinformatics workflow<br>解释生物信息学工作流程中的标准，准确性和安全性。<br>3、List the approaches used in a retinal dystrophy study to validate the clinical variants<br>列出在视网膜营养不良研究中所用的方法来验证临床变异<br>4、Identify the importance of ISO 15189 guideline for clinical bioinformaticians<br>确定ISO15189临床生物信息学指南在临床汇总的重要性</p>
+<h4 id="week5-5-2-Designing-the-analysis-pipeline"><a href="#week5-5-2-Designing-the-analysis-pipeline" class="headerlink" title="week5 5-2 Designing the analysis pipeline"></a>week5 5-2 Designing the analysis pipeline</h4><p>参考基因组是混合了100多个人的的序列组成的。<br>居然不用CRCh38哈哈，用的是37，该基因组主要是高加索人群，所以需要结合自己的种族背景来进行考虑。<br>对于变异位点当然要查有无人报道过，pathogenic。Ensembl包含有大量 pre-calculation pathogenic。为了帮助决策，视频讲者声称使用了<code>conservational tools and splice site prediction tools</code></p>
+<h4 id="week5-5-3-Information-Sources"><a href="#week5-5-3-Information-Sources" class="headerlink" title="week5 5-3 Information Sources"></a>week5 5-3 Information Sources</h4><p>之前视频讲者 提到了 <code>conservation tools (PolyPhen and Sift)</code><br>第二周提到过对变异位点的命名和分类。见 <a href="https://www.futurelearn.com/courses/bioinformatics/1/steps/87244" target="_blank" rel="external">https://www.futurelearn.com/courses/bioinformatics/1/steps/87244</a><br>提到了<br>ExAc database filter variants in this case to filter the variants against commonly seen variants in the general population and contains exome sequencing data from over 60,000 individuals in a single database.</p>
+<h4 id="week5-5-4-Identifying-variants"><a href="#week5-5-4-Identifying-variants" class="headerlink" title="week5 5-4 Identifying variants"></a>week5 5-4 Identifying variants</h4><p>有视频介绍。<br>视频可以分几段吧。</p>
+<ul>
+<li>当然要计算频率。<br> 比如 对于 heterozygous case的频率应该是多少？是平衡的么？如果是50-50的频率情况，那么这个可能是 autosomal recessive,常隐，也就是AR。 kind of characteristics looking for homozygous（纯合子） event or compound heterozygous(复合杂合子) event happening. 所以，需要根据频率来推断。</li>
+<li>核查证据<br>是否先前有人报道了，还要观察人群该变异的频率，提到了ExAC和dbSNP，讲者觉得最重要的当然是in-house db，我也觉得，根据自己的积累，可以将不相干的变异去掉，这些变异仅仅是背景的遗传多态性。</li>
+<li>科研和临床对待变异的差别<br>对于临床专家不会对已有结果进行重新返回头看或者分析，思考是不是新的突变等等，因为这会产生太多的不确定因素，患者是不愿意听的，当然在面对患者之前需要遗传咨询师对这一过程进行筛选。不过，如果你是研究人员，对于不常见的突变或者隐性基因，还是比较感兴趣的，因为可以发现新的致病基因。<br>二者不是对立的，在某种程度是相互合作的。</li>
+</ul>
+<h4 id="week5-5-5-Research-vs-diagnostic-bioinformatics"><a href="#week5-5-5-Research-vs-diagnostic-bioinformatics" class="headerlink" title="week5 5-5 Research vs diagnostic bioinformatics"></a>week5 5-5 Research vs diagnostic bioinformatics</h4><p>果然这节就讨论 研究和诊断<br>对于临床大夫，他们从血常规等诊断结果，都是那种比较肯定的东西，因为他们需要考虑很多患者的主述，临床表型等，基因的检测结果只是一部分，面对这么多证据，必须确保每个证据都是靠谱的，最后再整个的考虑，否则会让临床医生抓狂，下不了结论，因为太多的混乱。</p>
+<p>本节提了一个问题来讨论：</p>
+<blockquote>
+<p>Thinking about the role of a clinical bioinformatician and the previous week focus on ethics how can the balance be made between scientific progress and patient privacy?</p>
+</blockquote>
+<h4 id="week5-5-6"><a href="#week5-5-6" class="headerlink" title="week5 5-6"></a>week5 5-6</h4><h4 id="week5-5-7"><a href="#week5-5-7" class="headerlink" title="week5 5-7"></a>week5 5-7</h4><h4 id="week5-5-8"><a href="#week5-5-8" class="headerlink" title="week5 5-8"></a>week5 5-8</h4><h4 id="week5-5-9"><a href="#week5-5-9" class="headerlink" title="week5 5-9"></a>week5 5-9</h4><h4 id="week5-5-10"><a href="#week5-5-10" class="headerlink" title="week5 5-10"></a>week5 5-10</h4><h4 id="week5-5-11"><a href="#week5-5-11" class="headerlink" title="week5 5-11"></a>week5 5-11</h4><h4 id="week5-5-12"><a href="#week5-5-12" class="headerlink" title="week5 5-12"></a>week5 5-12</h4><h4 id="week5-5-13"><a href="#week5-5-13" class="headerlink" title="week5 5-13"></a>week5 5-13</h4><h4 id="week5-5-14"><a href="#week5-5-14" class="headerlink" title="week5 5-14"></a>week5 5-14</h4><h4 id="week5-5-15"><a href="#week5-5-15" class="headerlink" title="week5 5-15"></a>week5 5-15</h4><h4 id="week5-5-16"><a href="#week5-5-16" class="headerlink" title="week5 5-16"></a>week5 5-16</h4><h4 id="week5-5-17"><a href="#week5-5-17" class="headerlink" title="week5 5-17"></a>week5 5-17</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sun010848.github.io/2017/08/12/20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER_week5/" data-id="cj690pro800007bs61og5tfog" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/12/20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Futurelean Clinical Bioinformatics-week4</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Articles récents</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/12/20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER_week5/">Futurelean Clinical Bioinformatics-week5</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/12/20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER/">Futurelean Clinical Bioinformatics-week4</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/31/20170731_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER/">Futurelean Clinical Bioinformatics-week3</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/25/20170725_WES_or_panel/">要panel还是Exome</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/21/20170721_初探GATK4_Beta/">初探 GATK4 beta</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 sun xingqiang<br>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
