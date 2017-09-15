@@ -3,14 +3,25 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Biolaosun</title>
+  <title>测序数据质控统计--微不足道？意义重大！ | Biolaosun</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Biolaosun">
-<meta property="og:url" content="https://sun010848.github.io/index.html">
+  <meta name="description" content="(本文由GeneDock公司 Bioinformatics Engineer 武雅蓉撰写，转载请保留作者信息和原文链接)  引言：随着NGS测序成本的降低，高通量测序分析变得越来越普遍。然而，在实际工作中，生信人员往往拿到测序公司提供的数据之后，就直接开始跑流程，去接头、过滤、鉴定变异位点… 然而，过滤前和过滤后的数据到底有什么不同？数据中N碱基的含量如何？低质量的数据是否居多？测序深度是否达到要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测序数据质控统计--微不足道？意义重大！">
+<meta property="og:url" content="https://sun010848.github.io/2017/09/15/20170916_Sequencing_QC_Stat/index.html">
 <meta property="og:site_name" content="Biolaosun">
+<meta property="og:description" content="(本文由GeneDock公司 Bioinformatics Engineer 武雅蓉撰写，转载请保留作者信息和原文链接)  引言：随着NGS测序成本的降低，高通量测序分析变得越来越普遍。然而，在实际工作中，生信人员往往拿到测序公司提供的数据之后，就直接开始跑流程，去接头、过滤、鉴定变异位点… 然而，过滤前和过滤后的数据到底有什么不同？数据中N碱基的含量如何？低质量的数据是否居多？测序深度是否达到要">
+<meta property="og:image" content="https://cdn.genedock.com/img/blog/clean_merge_GC.png">
+<meta property="og:image" content="https://cdn.genedock.com/img/blog/clean_merge_QM.png">
+<meta property="og:image" content="https://cdn.genedock.com/img/blog/clean_merge_QD.png">
+<meta property="og:image" content="https://cdn.genedock.com/img/blog/clean_merge_Error.png">
+<meta property="og:image" content="https://cdn.genedock.com/img/blog/histPlot.png">
+<meta property="og:image" content="https://cdn.genedock.com/img/blog/cumuPlot.png">
+<meta property="og:updated_time" content="2017-09-15T04:10:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Biolaosun">
+<meta name="twitter:title" content="测序数据质控统计--微不足道？意义重大！">
+<meta name="twitter:description" content="(本文由GeneDock公司 Bioinformatics Engineer 武雅蓉撰写，转载请保留作者信息和原文链接)  引言：随着NGS测序成本的降低，高通量测序分析变得越来越普遍。然而，在实际工作中，生信人员往往拿到测序公司提供的数据之后，就直接开始跑流程，去接头、过滤、鉴定变异位点… 然而，过滤前和过滤后的数据到底有什么不同？数据中N碱基的含量如何？低质量的数据是否居多？测序深度是否达到要">
+<meta name="twitter:image" content="https://cdn.genedock.com/img/blog/clean_merge_GC.png">
   
     <link rel="alternate" href="/atom.xml" title="Biolaosun" type="application/atom+xml">
   
@@ -59,9 +70,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="postc-20170916_Sequencing_QC_Stat" class="article article-type-postc" itemscope itemprop="blogPost">
+        <section id="main"><article id="postc-20170916_Sequencing_QC_Stat" class="article article-type-postc" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/09/15/20170916_Sequencing_QC_Stat/" class="article-date">
   <time datetime="2017-09-14T16:00:00.000Z" itemprop="datePublished">2017-09-15</time>
@@ -74,8 +83,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/15/20170916_Sequencing_QC_Stat/">测序数据质控统计--微不足道？意义重大！</a>
+    <h1 class="article-title" itemprop="name">
+      测序数据质控统计--微不足道？意义重大！
     </h1>
   
 
@@ -365,222 +374,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER_week5" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/12/20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER_week5/" class="article-date">
-  <time datetime="2017-08-12T08:06:44.000Z" itemprop="datePublished">2017-08-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/12/20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER_week5/">Futurelean Clinical Bioinformatics-week5</a>
-    </h1>
+    <a href="/2017/08/12/20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER_week5/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Futurelean Clinical Bioinformatics-week5</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>记录自己在学习《Clinical Bioinformatics》的点点滴滴思考。这次记录的是第五周的课程。<br>这周课程主要是讲临床场景方面的东西。</p>
-<blockquote>
-<p>This activity will see us return to St Mary’s hospital and the Manchester Centre for Genomic Medicine as we focus on the bioinformatician’s role in practice.</p>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/2017/08/12/20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER_week5/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://sun010848.github.io/2017/08/12/20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER_week5/" data-id="cj7ld8oe10003j3s6aizxgpuu" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/08/12/20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER/" class="article-date">
-  <time datetime="2017-08-12T07:15:34.000Z" itemprop="datePublished">2017-08-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/12/20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER/">Futurelean Clinical Bioinformatics-week4</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>记录自己在学习《Clinical Bioinformatics》的点点滴滴思考。这次记录的是第四周的课程。<br>这周课程主要是讲医学伦理方面的东西。</p>
-<blockquote>
-<p>The focus of this week, therefore, will be on legalities, ethics and governance when dealing with genomic data</p>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/2017/08/12/20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://sun010848.github.io/2017/08/12/20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER/" data-id="cj7ld8oe20004j3s6mi45z78p" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-20170731_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/31/20170731_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER/" class="article-date">
-  <time datetime="2017-07-31T13:13:42.000Z" itemprop="datePublished">2017-07-31</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/31/20170731_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER/">Futurelean Clinical Bioinformatics-week3</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>记录自己在学习《Clinical Bioinformatics》的点点滴滴思考。这次记录的是第三周的课程。</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/07/31/20170731_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://sun010848.github.io/2017/07/31/20170731_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER/" data-id="cj7ld8odw0001j3s65bsyk968" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-20170725_WES_or_panel" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/25/20170725_WES_or_panel/" class="article-date">
-  <time datetime="2017-07-25T14:37:11.000Z" itemprop="datePublished">2017-07-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/25/20170725_WES_or_panel/">要panel还是Exome</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>原文章标题《Targeted Panels or Exome – Which is the Right NGS Approach for Inherited Disease Research?》<br>地址：Targeted Panels or Exome – Which is the Right NGS Approach for Inherited Disease Research? - Behind the Bench</p>
-        
-          <p class="article-more-link">
-            <a href="/2017/07/25/20170725_WES_or_panel/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://sun010848.github.io/2017/07/25/20170725_WES_or_panel/" data-id="cj7ld8oe00002j3s6z64fpfxw" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="postc-20170721_初探GATK4_Beta" class="article article-type-postc" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/07/21/20170721_初探GATK4_Beta/" class="article-date">
-  <time datetime="2017-07-21T03:00:00.000Z" itemprop="datePublished">2017-07-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/21/20170721_初探GATK4_Beta/">初探 GATK4 beta</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p></p><p class="author-title">(本文是根据GeneDock基因数据工程师孙兴强对GATK4 beta版的调研结果整理，转载请保留转载信息和原文作者及链接。)</p><br><span style="font-size:14px"><p></p><p></p>
-<h2 id="注：-本文是根据阅读GATK4在GitHub上的说明文档和版本开发记录并加上对该版本软件对生物信息研发和生产的一些体验组成的。GATK4-GitHub的官网内容会有引用标识，其余内容为笔者的理解内容。由于GATK4还在开发中，本文的时效性会受该项目的开发进度影响，请谨慎阅读。"><a href="#注：-本文是根据阅读GATK4在GitHub上的说明文档和版本开发记录并加上对该版本软件对生物信息研发和生产的一些体验组成的。GATK4-GitHub的官网内容会有引用标识，其余内容为笔者的理解内容。由于GATK4还在开发中，本文的时效性会受该项目的开发进度影响，请谨慎阅读。" class="headerlink" title="注： 本文是根据阅读GATK4在GitHub上的说明文档和版本开发记录并加上对该版本软件对生物信息研发和生产的一些体验组成的。GATK4 GitHub的官网内容会有引用标识，其余内容为笔者的理解内容。由于GATK4还在开发中，本文的时效性会受该项目的开发进度影响，请谨慎阅读。"></a><span style="font-size:16px">注： 本文是根据阅读GATK4在GitHub上的说明文档和版本开发记录并加上对该版本软件对生物信息研发和生产的一些体验组成的。GATK4 GitHub的官网内容会有引用标识，其余内容为笔者的理解内容。由于GATK4还在开发中，本文的时效性会受该项目的开发进度影响，请谨慎阅读。</span></h2>
-        
-          <p class="article-more-link">
-            <a href="/2017/07/21/20170721_初探GATK4_Beta/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://sun010848.github.io/2017/07/21/20170721_初探GATK4_Beta/" data-id="cj7ld8odp0000j3s6n1kgauzb" class="article-share-link">Partager</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 </section>
         
