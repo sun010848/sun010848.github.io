@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>VEP--强大的变异注释工具 | Biolaosun</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="(本文由GeneDock公司 Bioinformatics Engineer 刘轩竹撰写，转载请保留作者信息和原文链接)  背景随着基因测序技术的快速发展，检测成本大幅度降低，使得基因组测序投入临床市场并服务大众。但二代测序发现的变异数量是巨大的，造成变异解读及查找致病基因需耗费大量的人力物力。以人类基因组为例，1个人类基因组包含近3500000个SNV突变和1000个拷贝数变异，其中约20000">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VEP--强大的变异注释工具">
+<meta property="og:url" content="https://sun010848.github.io/2017/10/16/20171017_VEP_annotation/index.html">
+<meta property="og:site_name" content="Biolaosun">
+<meta property="og:description" content="(本文由GeneDock公司 Bioinformatics Engineer 刘轩竹撰写，转载请保留作者信息和原文链接)  背景随着基因测序技术的快速发展，检测成本大幅度降低，使得基因组测序投入临床市场并服务大众。但二代测序发现的变异数量是巨大的，造成变异解读及查找致病基因需耗费大量的人力物力。以人类基因组为例，1个人类基因组包含近3500000个SNV突变和1000个拷贝数变异，其中约20000">
+<meta property="og:image" content="http://cdn.genedock.com/img/blog/vep_workflow.png">
+<meta property="og:updated_time" content="2017-10-18T03:06:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="VEP--强大的变异注释工具">
+<meta name="twitter:description" content="(本文由GeneDock公司 Bioinformatics Engineer 刘轩竹撰写，转载请保留作者信息和原文链接)  背景随着基因测序技术的快速发展，检测成本大幅度降低，使得基因组测序投入临床市场并服务大众。但二代测序发现的变异数量是巨大的，造成变异解读及查找致病基因需耗费大量的人力物力。以人类基因组为例，1个人类基因组包含近3500000个SNV突变和1000个拷贝数变异，其中约20000">
+<meta name="twitter:image" content="http://cdn.genedock.com/img/blog/vep_workflow.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Biolaosun" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Biolaosun</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://sun010848.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="postc-20171017_VEP_annotation" class="article article-type-postc" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/10/16/20171017_VEP_annotation/" class="article-date">
+  <time datetime="2017-10-15T16:00:00.000Z" itemprop="datePublished">2017-10-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      VEP--强大的变异注释工具
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p class="author-title">(本文由GeneDock公司 Bioinformatics Engineer 刘轩竹撰写，转载请保留作者信息和原文链接)</p>
+
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p><span style="font-size:16px">随着基因测序技术的快速发展，检测成本大幅度降低，使得基因组测序投入临床市场并服务大众。但二代测序发现的变异数量是巨大的，造成变异解读及查找致病基因需耗费大量的人力物力。以人类基因组为例，1个人类基因组包含近3500000个SNV突变和1000个拷贝数变异，其中约20000-25000个变异是在编码区，10000个位点改变了氨基酸编码，但仅有50-100个突变造成蛋白截断或功能缺失，手动检查每个位点非常耗时且有些不切实际。</span></p>
+<p><span style="font-size:16px">Variant Effect Predictor（VEP）是功能强大的注释、分析工具。它可以对二代测试产生的不同类型变异进行注释，包含SNPs, insertions, deletions, copy number variants和structural variants。也可以依据各种数据库的内容，根据需要，对变异进行过滤和排序。</span> </p>
+<p><span style="font-size:16px">GeneDock协作云平台目前提供VEP注释的工作流，使用VEP88对变异进行注释，输入变异检测后的vcf文件，输出注释后的文件（vcf格式）和经筛选后的变异位点。</span></p>
+<a id="more"></a>
+<h2 id="VEP工作流介绍"><a href="#VEP工作流介绍" class="headerlink" title="VEP工作流介绍"></a>VEP工作流介绍</h2><center><img src="http://cdn.genedock.com/img/blog/vep_workflow.png" alt=""></center>
+
+
+<center><strong>图1：工作流程图</strong></center>
+
+
+<h3 id="1-VEP使用的数据库"><a href="#1-VEP使用的数据库" class="headerlink" title="1. VEP使用的数据库"></a>1. VEP使用的数据库</h3><p><span style="font-size:16px">VEP注释使用的是caches文件包，以human注释文件为例，有Ensembl转录本、RefSeq转录本及二者整合的三种cache文件包，文件包中还包含如下数据库信息（VEP88）：</span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Database</th>
+<th style="text-align:left">Version</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">GENCODE</td>
+<td style="text-align:left">19</td>
+</tr>
+<tr>
+<td style="text-align:left">dbSNP</td>
+<td style="text-align:left">147</td>
+</tr>
+<tr>
+<td style="text-align:left">1000genomes</td>
+<td style="text-align:left">phase3</td>
+</tr>
+<tr>
+<td style="text-align:left">ESP</td>
+<td style="text-align:left">20141103</td>
+</tr>
+<tr>
+<td style="text-align:left">ExAC</td>
+<td style="text-align:left">0.3</td>
+</tr>
+<tr>
+<td style="text-align:left">COSMIC</td>
+<td style="text-align:left">78</td>
+</tr>
+<tr>
+<td style="text-align:left">HGMD-PUBLIC</td>
+<td style="text-align:left">20162</td>
+</tr>
+<tr>
+<td style="text-align:left">Clinvar</td>
+<td style="text-align:left">201610</td>
+</tr>
+<tr>
+<td style="text-align:left">polyphen</td>
+<td style="text-align:left">2.2.2</td>
+</tr>
+<tr>
+<td style="text-align:left">sift</td>
+<td style="text-align:left">5.2.2</td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-size:16px">在此基础上，VEP运行时还可以使用plugin和custom参数自定义添加数据库。GeneDock平台的VEP工作流目前添加了以下数据库。</span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Database</th>
+<th style="text-align:left">Information</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">M-CAP</td>
+<td style="text-align:left">Pathogenicity classifier for rare missense variants in the human genome</td>
+</tr>
+<tr>
+<td style="text-align:left">dbscSNV</td>
+<td style="text-align:left">Includes all potential human SNVs within splicing consensus regions (−3 to +8 at the 5’ splice site and −12 to +2 at the 3’ splice site), i.e. scSNVs, related functional annotations and two ensemble prediction scores for predicting their potential of altering splicing.</td>
+</tr>
+<tr>
+<td style="text-align:left">ClinVar</td>
+<td style="text-align:left">Public archive of reports of the relationships among human variations and phenotypes, with supporting evidence</td>
+</tr>
+<tr>
+<td style="text-align:left">gnomAD</td>
+<td style="text-align:left">The Genome Aggregation Database</td>
+</tr>
+<tr>
+<td style="text-align:left">dbNSFP</td>
+<td style="text-align:left">Database with functional prediction and annotation of all potential non-synonymous SNVs</td>
+</tr>
+</tbody>
+</table>
+<p><span style="font-size:16px">备注：自定义数据库中的Clinvar数据库版本较Cache文件包有更新。</span></p>
+<h3 id="2-可注释变异类型"><a href="#2-可注释变异类型" class="headerlink" title="2. 可注释变异类型"></a>2. 可注释变异类型</h3><p><span style="font-size:16px">  明确位置及序列改变的变异，全外显子组和全基因组检测出的变异，包含SNVs，insertions、deletion等。</span></p>
+<h3 id="3-注释结果信息"><a href="#3-注释结果信息" class="headerlink" title="3. 注释结果信息"></a>3. 注释结果信息</h3><p><span style="font-size:16px"> 1)    功能注释信息，主要是把变异在基因组的位置和功能影响标出。包括基因信息和变异影响，信息来自RefSeq或Ensembl。 </span><br><span style="font-size:16px"> 2)    频率信息，标记群体数据库频率，包含数据库总的频率及子群体频率。这部分信息主要在疾病研究中根据疾病的流行病学研究，有针对性的筛选低频或罕见变异，为人类疾病研究提供基础。高通量测序检出的变异数目众多，对于遗传病来说，要筛选出致病变异，需要过滤掉一些常见变异，群体变异库的使用可以进一步缩小筛选范围。 </span><br><span style="font-size:16px"> 3)    软件预测结果信息，突变的致病性预测。可有效缩小变异范围，协助研究者更快找到致病基因。 </span> </p>
+<p><span style="font-size:16px"> 4) 疾病数据库信息，HGMD、Clinvar等数据库信息，协助用户快速定位已知致病位点。</span> </p>
+<h3 id="4-过滤筛选"><a href="#4-过滤筛选" class="headerlink" title="4. 过滤筛选"></a>4. 过滤筛选</h3><p><span style="font-size:16px"> VEP工作流提供注释结果的简单过滤，主要包含 </span> </p>
+<p><span style="font-size:16px"> 1) 筛选功能突变，筛选出coding区和剪切区域的突变； </span> </p>
+<p><span style="font-size:16px"> 2) 按照频率过滤，筛选出低于指定频率的突变；</span> </p>
+<p><span style="font-size:16px"> 3) 按照遗传模式过滤。</span> </p>
+<p><span style="font-size:16px"></span></p>
+<h2 id="运行时间"><a href="#运行时间" class="headerlink" title="运行时间"></a>运行时间</h2><h3 id="1-cache文件建索引，能更大的节省时间"><a href="#1-cache文件建索引，能更大的节省时间" class="headerlink" title="1. cache文件建索引，能更大的节省时间"></a>1. cache文件建索引，能更大的节省时间</h3><p><span style="font-size:16px"> 1) 命令行: </span></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">perl convert_cache.pl -species homo_sapiens -version 88_GRCh37 --force_overwrite</div></pre></td></tr></table></figure>
+<p><span style="font-size:16px"> 注意：建索引时间比较长，建议放后台执行。</span><br><span style="font-size:16px"> 2)    时间比较：2020个位点的vcf文件，使用-everthing注释，</span><br><span style="font-size:16px"> cache不建索引:50-60min </span><br><span style="font-size:16px"> cache建索引后:2-3min  </span></p>
+<p><span style="font-size:16px"> 3)    参考网址 <a href="http://www.ensembl.org/info/docs/tools/vep/script/vep_cache.html。" target="_blank" rel="external">http://www.ensembl.org/info/docs/tools/vep/script/vep_cache.html。</a></span></p>
+<h3 id="2-案例"><a href="#2-案例" class="headerlink" title="2. 案例"></a>2. 案例</h3><p><span style="font-size:16px"> 在GeneDock平台深圳域测试了两个外显子数据，使用4核8G的机器，</span></p>
+<p><span style="font-size:16px"> 1) 不添加自定义数据库的前提下，</span></p>
+<p><span style="font-size:16px"> 文件1：137750个位点，运行时间约7分钟。</span></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./vep -i sample1.vcf  --cache -o sample1.out.txt  --force_overwrite --everything --tab  --fork 4 --assembly GRCh37 --offline</div></pre></td></tr></table></figure>
+<p><span style="font-size:16px"> 文件2：182748个位点，运行时间约12分钟。</span></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">./vep -i sample2.vcf --cache -o sample2.out.txt  --force_overwrite  --everything --tab  --fork 4 --assembly GRCh37 --offline</div></pre></td></tr></table></figure>
+<p><span style="font-size:16px"> 2) 在添加了自定义数据库gnomeAD、dbscSNV、MCAP、dbNSFP后， </span></p>
+<p><span style="font-size:16px"> 文件1：137750个位点，运算时间为13分钟；</span></p>
+<p><span style="font-size:16px"> 文件2：182748个位点,运行时间约20分钟。</span></p>
+<p><span style="font-size:16px"> 结论：20分钟完成一个WES的vcf注释，这个时间对于研究者来说，接受度较高。</span></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p><span style="font-size:16px">变异位点的注释是变异分析，基因研究的重要步骤，VEP更新速度快，支持自定义数据库，运行时间短，可更好的服务研究者。GeneDock协作云平台提供的VEP注释工作流，助力您的科学研究。</span></p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>McLaren W, Gil L, Hunt SE, Riat HS, Ritchie GR, Thormann A, Flicek P, Cunningham F.The Ensembl Variant Effect Predictor.Genome Biology Jun 6;17(1):122. (2016) doi:10.1186/s13059-016-0974-4.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://sun010848.github.io/2017/10/16/20171017_VEP_annotation/" data-id="cj8wgtx350004c3s6yjn1vpwg" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/09/15/20170916_Sequencing_QC_Stat/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">测序数据质控统计--微不足道？意义重大！</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">October 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/09/">September 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/10/16/20171017_VEP_annotation/">VEP--强大的变异注释工具</a>
+          </li>
+        
+          <li>
+            <a href="/2017/09/15/20170916_Sequencing_QC_Stat/">测序数据质控统计--微不足道？意义重大！</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/12/20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER_week5/">Futurelean Clinical Bioinformatics-week5</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/12/20170812_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER/">Futurelean Clinical Bioinformatics-week4</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/31/20170731_learn_CLINICAL_BIOINFORMATICS_THE_UNIVERSITY_OF_MANCHESTER/">Futurelean Clinical Bioinformatics-week3</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 sun xingqiang<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
